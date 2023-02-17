@@ -1,9 +1,9 @@
 import Email from "./Email";
 
 export enum Role {
-  admin,
-  teacher,
-  student
+  admin = "admin",
+  teacher = "teacher",
+  student = "student"
 }
 
 export default class User {
