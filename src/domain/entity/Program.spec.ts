@@ -19,8 +19,8 @@ describe("Program test", () => {
   const nonAdminTeacher = new User("nonAdmin", "lastname", "name@email.com", "password", Role.teacher)
   const nonAdminStudent = new User("nonAdmin", "lastname", "name@email.com", "password", Role.student)
 
-  expect(() => new Program("program", "description", 5, "program123", nonAdminTeacher)).toThrow(new Error("Non admin cannot create subject"))
-  expect(() => new Program("program", "description", 5, "program123", nonAdminStudent)).toThrow(new Error("Non admin cannot create subject"))
+  expect(() => new Program("program", "description", 5, "program123", nonAdminTeacher)).toThrow(new Error("Non admin cannot create program"))
+  expect(() => new Program("program", "description", 5, "program123", nonAdminStudent)).toThrow(new Error("Non admin cannot create program"))
   })
 
   it("should add teacher to program", () => {
@@ -57,5 +57,13 @@ describe("Program test", () => {
   expect(() => program.addStudent(nonStudent)).toThrow(new Error("Cannot add a non student"))
   })
 
-  it("should add subject to program", () => {})
+  it("should add subject to program", () => {
+  const admin = new User("admin", "lastname", "name@email.com", "password", Role.admin)
+  const program = new Program("program", "description", 5, "program123", admin)
+  const teacher = new User("teacher", "lastname", "name@email.com", "password", Role.teacher)
+  const subject = new Subject("subject", "description", teacher, "4", admin, 10)
+  program.addSubject(subject)
+
+  expect(program.subjects[0].id).toBe(subject.id)
+  })
 })

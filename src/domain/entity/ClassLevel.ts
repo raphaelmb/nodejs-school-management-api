@@ -1,19 +1,18 @@
-import Subject from "./Subject";
-import User, { Role } from "./User";
+import Subject from "./Subject"
+import User, { Role } from "./User"
 
-// TODO: autogenerate code property
-export default class Program {
-  teachers: User[] = []
+export default class ClassLevel {
   students: User[] = []
+  teachers: User[] = []
   subjects: Subject[] = []
 
-  constructor(readonly name: string, readonly description: string, readonly duration: number, readonly code: string, readonly createdBy: User, readonly id?: string) {
+  constructor(readonly name: string, readonly description: string, readonly createdBy: User, readonly id?: string) {
     if (!this.id) this.id = crypto.randomUUID()
     this.validate()
   }
 
   validate(): void {
-    if (this.createdBy.role != Role.admin) throw new Error("Non admin cannot create program")
+    if (this.createdBy.role != Role.admin) throw new Error("Non admin cannot create class level")
   }
 
   addTeacher(teacher: User): void {
@@ -30,3 +29,4 @@ export default class Program {
     this.subjects.push(subject)
   }
 }
+
