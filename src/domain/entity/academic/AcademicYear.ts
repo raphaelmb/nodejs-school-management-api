@@ -1,8 +1,8 @@
 import User, { Role } from "../staff/User";
 
 export default class AcademicYear {
-  students: User[] = [];
-  teachers: User[] = [];
+  readonly students: User[] = [];
+  readonly teachers: User[] = [];
 
   constructor(
     readonly name: string,

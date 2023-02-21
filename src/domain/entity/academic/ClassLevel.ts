@@ -2,9 +2,9 @@ import User, { Role } from "../staff/User";
 import Subject from "./Subject";
 
 export default class ClassLevel {
-  students: User[] = [];
-  teachers: User[] = [];
-  subjects: Subject[] = [];
+  readonly students: User[] = [];
+  readonly teachers: User[] = [];
+  readonly subjects: Subject[] = [];
 
   constructor(
     readonly name: string,

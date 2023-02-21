@@ -3,9 +3,9 @@ import Subject from "./Subject";
 
 // TODO: autogenerate code property
 export default class Program {
-  teachers: User[] = [];
-  students: User[] = [];
-  subjects: Subject[] = [];
+  readonly teachers: User[] = [];
+  readonly students: User[] = [];
+  readonly subjects: Subject[] = [];
 
   constructor(
     readonly name: string,

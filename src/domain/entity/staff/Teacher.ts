@@ -18,12 +18,11 @@ export default class Teacher extends User {
     readonly lastName: string,
     readonly emailInput: string,
     readonly password: string,
-    readonly role: Role,
     readonly teacherId: string,
-    readonly isWithdrawn: boolean,
-    readonly isSuspended: boolean,
+    private isWithdrawn: boolean,
+    private isSuspended: boolean,
     readonly subject: Subject,
-    readonly applicationStatus: ApplicationStatus,
+    private applicationStatus: ApplicationStatus,
     readonly program: Program,
     readonly classLevel: ClassLevel,
     readonly academicYear: AcademicYear,
@@ -32,6 +31,22 @@ export default class Teacher extends User {
     readonly academicTerm: AcademicTerm,
     readonly id?: string
   ) {
-    super(firstName, lastName, emailInput, password, role, id);
+    super(firstName, lastName, emailInput, password, Role.teacher, id);
+  }
+
+  createExam(exam: Exam): void {
+    this.examsCreated.push(exam);
+  }
+
+  changeApplicationStatus(status: ApplicationStatus): void {
+    this.applicationStatus = status;
+  }
+
+  changeWithdrawnStatus(): void {
+    this.isWithdrawn = !this.isWithdrawn;
+  }
+
+  changeSuspensionStatus(): void {
+    this.isSuspended = !this.isSuspended;
   }
 }

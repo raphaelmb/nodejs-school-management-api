@@ -1,10 +1,11 @@
+import Teacher from "../staff/Teacher";
 import User, { Role } from "../staff/User";
 
 export default class Subject {
   constructor(
     readonly name: string,
     readonly description: string,
-    readonly teacher: User,
+    readonly teacher: Teacher,
     readonly academicTerm: string,
     readonly createdBy: User,
     readonly duration: number,
@@ -15,7 +16,7 @@ export default class Subject {
   }
 
   validate(): void {
-    if (this.createdBy.role != Role.admin)
+    if (this.createdBy.role !== Role.admin)
       throw new Error("Non admin cannot create subject");
   }
 }
