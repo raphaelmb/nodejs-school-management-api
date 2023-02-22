@@ -33,7 +33,7 @@ describe("Subject test", () => {
     expect(subject.teacher.id).toBe(teacher.id);
     expect(subject.academicTerm).toBe("4");
     expect(subject.createdBy.id).toBe(admin.id);
-    expect(subject.duration).toBe(10);
+    expect(subject.durationInMonths).toBe(10);
   });
 
   it("should not create a subject with a non admin role", () => {

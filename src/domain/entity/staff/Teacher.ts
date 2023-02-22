@@ -4,6 +4,7 @@ import ClassLevel from "../academic/ClassLevel";
 import Exam from "../academic/Exam";
 import Program from "../academic/Program";
 import Subject from "../academic/Subject";
+import Admin from "./Admin";
 import User, { Role } from "./User";
 
 enum ApplicationStatus {
@@ -27,7 +28,7 @@ export default class Teacher extends User {
     readonly classLevel: ClassLevel,
     readonly academicYear: AcademicYear,
     readonly examsCreated: Exam[],
-    readonly createdBy: User,
+    readonly createdBy: Admin,
     readonly academicTerm: AcademicTerm,
     readonly id?: string
   ) {

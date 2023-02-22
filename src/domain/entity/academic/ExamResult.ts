@@ -1,4 +1,4 @@
-import User from "../staff/User";
+import Student from "../staff/Student";
 import AcademicTerm from "./AcademicTerm";
 import AcademicYear from "./AcademicYear";
 import ClassLevel from "./ClassLevel";
@@ -18,7 +18,7 @@ enum ExamRemarks {
 
 export default class ExamResult {
   constructor(
-    readonly student: User,
+    readonly student: Student,
     readonly exam: Exam,
     readonly grade: number,
     readonly score: number,

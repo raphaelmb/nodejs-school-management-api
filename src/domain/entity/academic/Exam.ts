@@ -17,21 +17,20 @@ enum ExamStatus {
 }
 
 export default class Exam {
-  readonly questions: Question[] = [];
-
   constructor(
     readonly name: string,
     readonly description: string,
     readonly subject: Subject,
     readonly program: Program,
-    readonly passMark: number,
+    readonly passMark: number = 50,
     readonly totalMark: number,
     readonly academicTerm: AcademicTerm,
     readonly duration: number,
-    readonly examDate: Date,
+    readonly examDate: Date = new Date(),
     readonly examType: ExamType,
     readonly examStatus: ExamStatus,
     readonly classLevel: ClassLevel,
+    readonly questions: Question[] = [],
     readonly createdBy: Teacher,
     readonly academicYear: AcademicYear,
     readonly id?: string

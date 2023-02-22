@@ -6,7 +6,7 @@ export enum Role {
   student = "student",
 }
 
-export default class User {
+export default abstract class User {
   email: Email;
 
   constructor(

@@ -1,17 +1,12 @@
 import { describe, expect, it } from "vitest";
+import Admin from "../staff/Admin";
 import User, { Role } from "../staff/User";
 import AcademicYear from "./AcademicYear";
 import YearGroup from "./YearGroup";
 
 describe("YearGroup test", () => {
   it("should create a year group", () => {
-    const admin = new User(
-      "admin",
-      "lastname",
-      "name@email.com",
-      "password",
-      Role.admin
-    );
+    const admin = new Admin("admin", "lastname", "name@email.com", "password");
     const academicYear = new AcademicYear(
       "name",
       new Date("2023-02-17T10:00:00"),

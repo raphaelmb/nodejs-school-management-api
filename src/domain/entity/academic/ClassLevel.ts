@@ -1,15 +1,17 @@
-import User, { Role } from "../staff/User";
+import Admin from "../staff/Admin";
+import Student from "../staff/Student";
+import Teacher from "../staff/Teacher";
+import { Role } from "../staff/User";
 import Subject from "./Subject";
 
 export default class ClassLevel {
-  readonly students: User[] = [];
-  readonly teachers: User[] = [];
-  readonly subjects: Subject[] = [];
-
   constructor(
     readonly name: string,
     readonly description: string,
-    readonly createdBy: User,
+    readonly createdBy: Admin,
+    readonly students: Student[] = [],
+    readonly teachers: Teacher[] = [],
+    readonly subjects: Subject[] = [],
     readonly id?: string
   ) {
     if (!this.id) this.id = crypto.randomUUID();
@@ -21,13 +23,13 @@ export default class ClassLevel {
       throw new Error("Non admin cannot create class level");
   }
 
-  addTeacher(teacher: User): void {
+  addTeacher(teacher: Teacher): void {
     if (teacher.role !== Role.teacher)
       throw new Error("Cannot add a non teacher");
     this.teachers.push(teacher);
   }
 
-  addStudent(student: User): void {
+  addStudent(student: Student): void {
     if (student.role !== Role.student)
       throw new Error("Cannot add a non student");
     this.students.push(student);

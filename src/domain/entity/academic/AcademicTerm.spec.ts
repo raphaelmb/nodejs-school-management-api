@@ -1,22 +1,18 @@
 import { describe, expect, it } from "vitest";
 import AcademicTerm from "./AcademicTerm";
 import User, { Role } from "../staff/User";
+import Admin from "../staff/Admin";
+import Teacher from "../staff/Teacher";
 
 describe("AcademicTerm test", () => {
   it("should create an academic term", () => {
-    const admin = new User(
-      "admin",
-      "lastname",
-      "name@email.com",
-      "password",
-      Role.admin
-    );
+    const admin = new Admin("admin", "lastname", "name@email.com", "password");
     const academicTerm = new AcademicTerm("name", "description", 4, admin);
 
     expect(academicTerm.id).toBeDefined();
     expect(academicTerm.name).toBe("name");
     expect(academicTerm.description).toBe("description");
-    expect(academicTerm.duration).toBe(4);
+    expect(academicTerm.durationInMonths).toBe(4);
     expect(academicTerm.createdBy.id).toBe(admin.id);
   });
 
