@@ -1,7 +1,7 @@
 import Teacher from "../staff/Teacher";
 import { Role } from "../staff/User";
 
-enum CorrectAnswer {
+export enum CorrectAnswer {
   optionA = "A",
   optionB = "B",
   optionC = "C",

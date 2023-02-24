@@ -7,13 +7,15 @@ import Subject from "../academic/Subject";
 import Admin from "./Admin";
 import User, { Role } from "./User";
 
-enum ApplicationStatus {
+export enum ApplicationStatus {
   pending = "pending",
   approved = "approved",
   rejected = "rejected",
 }
 
 export default class Teacher extends User {
+  readonly examsCreated: Exam[] = [];
+
   constructor(
     readonly firstName: string,
     readonly lastName: string,
@@ -22,17 +24,17 @@ export default class Teacher extends User {
     readonly teacherId: string,
     private isWithdrawn: boolean,
     private isSuspended: boolean,
-    readonly subject: Subject,
     private applicationStatus: ApplicationStatus,
     readonly program: Program,
     readonly classLevel: ClassLevel,
     readonly academicYear: AcademicYear,
-    readonly examsCreated: Exam[],
     readonly createdBy: Admin,
     readonly academicTerm: AcademicTerm,
+    private subject?: Subject,
     readonly id?: string
   ) {
     super(firstName, lastName, emailInput, password, Role.teacher, id);
+    if (!this.id) this.id = crypto.randomUUID();
   }
 
   createExam(exam: Exam): void {
@@ -49,5 +51,9 @@ export default class Teacher extends User {
 
   changeSuspensionStatus(): void {
     this.isSuspended = !this.isSuspended;
+  }
+
+  addSubject(subject: Subject): void {
+    this.subject = subject;
   }
 }

@@ -17,7 +17,6 @@ export default abstract class User {
     readonly role: Role,
     readonly id?: string
   ) {
-    if (!this.id) this.id = crypto.randomUUID();
     this.email = new Email(emailInput);
     this.validate();
   }

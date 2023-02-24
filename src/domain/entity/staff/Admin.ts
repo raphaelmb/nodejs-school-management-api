@@ -23,5 +23,6 @@ export default class Admin extends User {
     readonly id?: string
   ) {
     super(firstName, lastName, emailInput, password, Role.admin, id);
+    if (!this.id) this.id = crypto.randomUUID();
   }
 }

@@ -5,17 +5,18 @@ import Program from "../academic/Program";
 import User, { Role } from "./User";
 
 export default class Student extends User {
+  readonly classLevels: ClassLevel[] = [];
+  readonly examResults: ExamResult[] = [];
+
   constructor(
     readonly firstName: string,
     readonly lastName: string,
     readonly emailInput: string,
     readonly password: string,
     readonly studentId: string,
-    readonly classLevels: ClassLevel[],
     readonly currentClassLevel: string,
     readonly academicYear: AcademicYear,
     readonly dateAdmitted: Date = new Date(),
-    readonly examResults: ExamResult[],
     readonly program: Program,
     private isPromotedToLevel200: boolean,
     private isPromotedToLevel300: boolean,
@@ -28,6 +29,7 @@ export default class Student extends User {
     readonly id?: string
   ) {
     super(firstName, lastName, emailInput, password, Role.student, id);
+    if (!this.id) this.id = crypto.randomUUID();
   }
 
   addExamResult(examResult: ExamResult): void {

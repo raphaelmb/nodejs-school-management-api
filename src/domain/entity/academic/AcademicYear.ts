@@ -4,14 +4,15 @@ import Teacher from "../staff/Teacher";
 import User, { Role } from "../staff/User";
 
 export default class AcademicYear {
+  readonly students: Student[] = [];
+  readonly teachers: Teacher[] = [];
+
   constructor(
     readonly name: string,
     readonly fromYear: Date,
     readonly toYear: Date,
     readonly isCurrent: boolean,
     readonly createdBy: Admin,
-    readonly students: Student[] = [],
-    readonly teachers: Teacher[] = [],
     readonly id?: string
   ) {
     if (!this.id) this.id = crypto.randomUUID();

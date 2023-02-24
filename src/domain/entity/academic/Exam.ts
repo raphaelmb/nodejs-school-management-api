@@ -7,16 +7,18 @@ import Program from "./Program";
 import Question from "./Question";
 import Subject from "./Subject";
 
-enum ExamType {
+export enum ExamType {
   quiz = "quiz",
 }
 
-enum ExamStatus {
+export enum ExamStatus {
   pending = "pending",
   live = "live",
 }
 
 export default class Exam {
+  questions: Question[] = [];
+
   constructor(
     readonly name: string,
     readonly description: string,
@@ -30,7 +32,6 @@ export default class Exam {
     readonly examType: ExamType,
     readonly examStatus: ExamStatus,
     readonly classLevel: ClassLevel,
-    readonly questions: Question[] = [],
     readonly createdBy: Teacher,
     readonly academicYear: AcademicYear,
     readonly id?: string

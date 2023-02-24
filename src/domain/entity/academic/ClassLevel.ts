@@ -5,13 +5,14 @@ import { Role } from "../staff/User";
 import Subject from "./Subject";
 
 export default class ClassLevel {
+  readonly students: Student[] = [];
+  readonly teachers: Teacher[] = [];
+  readonly subjects: Subject[] = [];
+
   constructor(
     readonly name: string,
     readonly description: string,
     readonly createdBy: Admin,
-    readonly students: Student[] = [],
-    readonly teachers: Teacher[] = [],
-    readonly subjects: Subject[] = [],
     readonly id?: string
   ) {
     if (!this.id) this.id = crypto.randomUUID();

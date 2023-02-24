@@ -5,12 +5,12 @@ import ClassLevel from "./ClassLevel";
 import Exam from "./Exam";
 import Subject from "./Subject";
 
-enum ExamStatus {
+export enum ExamResultStatus {
   passed = "passed",
   failed = "failed",
 }
 
-enum ExamRemarks {
+export enum ExamRemarks {
   excellent = "excelent",
   good = "good",
   poor = "poor",
@@ -19,11 +19,11 @@ enum ExamRemarks {
 export default class ExamResult {
   constructor(
     readonly student: Student,
-    readonly exam: Exam,
+    readonly examId: string,
     readonly grade: number,
     readonly score: number,
     readonly passMark: number,
-    readonly status: ExamStatus,
+    readonly status: ExamResultStatus,
     readonly remarks: ExamRemarks,
     readonly position: number,
     readonly subject: Subject,
