@@ -22,38 +22,46 @@ export default class Teacher extends User {
     readonly emailInput: string,
     readonly password: string,
     readonly teacherId: string,
-    private isWithdrawn: boolean,
-    private isSuspended: boolean,
-    private applicationStatus: ApplicationStatus,
+    private _isWithdrawn: boolean,
+    private _isSuspended: boolean,
+    private _applicationStatus: ApplicationStatus,
     readonly program: Program,
     readonly classLevel: ClassLevel,
     readonly academicYear: AcademicYear,
     readonly createdBy: Admin,
     readonly academicTerm: AcademicTerm,
-    private subject?: Subject,
+    private _subject?: Subject,
     readonly id?: string
   ) {
     super(firstName, lastName, emailInput, password, Role.teacher, id);
     if (!this.id) this.id = crypto.randomUUID();
   }
 
+  get isWithdrawn() {
+    return this._isWithdrawn;
+  }
+
+  get isSuspended() {
+    return this._isSuspended;
+  }
+
+  get applicationStatus() {
+    return this._applicationStatus;
+  }
+
   createExam(exam: Exam): void {
     this.examsCreated.push(exam);
   }
 
-  changeApplicationStatus(status: ApplicationStatus): void {
-    this.applicationStatus = status;
-  }
-
   changeWithdrawnStatus(): void {
-    this.isWithdrawn = !this.isWithdrawn;
+    this._isWithdrawn = !this.isWithdrawn;
   }
 
   changeSuspensionStatus(): void {
-    this.isSuspended = !this.isSuspended;
+    this._isSuspended = !this.isSuspended;
   }
 
   addSubject(subject: Subject): void {
-    this.subject = subject;
+    this._subject = subject;
   }
 }
