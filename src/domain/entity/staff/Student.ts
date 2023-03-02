@@ -18,12 +18,12 @@ export default class Student extends User {
     readonly academicYear: AcademicYear,
     readonly dateAdmitted: Date = new Date(),
     readonly program: Program,
-    private isPromotedToLevel200: boolean,
-    private isPromotedToLevel300: boolean,
-    private isPromotedToLevel400: boolean,
-    private isGraduated: boolean,
-    private isWithdrawn: boolean,
-    private isSuspended: boolean,
+    private _isPromotedToLevel200: boolean,
+    private _isPromotedToLevel300: boolean,
+    private _isPromotedToLevel400: boolean,
+    private _isGraduated: boolean,
+    private _isWithdrawn: boolean,
+    private _isSuspended: boolean,
     readonly prefecName: string,
     readonly yearGraduated: string,
     readonly id?: string
@@ -32,31 +32,55 @@ export default class Student extends User {
     if (!this.id) this.id = crypto.randomUUID();
   }
 
+  get isPromotedToLevel200() {
+    return this._isPromotedToLevel200;
+  }
+
+  get isPromotedToLevel300() {
+    return this._isPromotedToLevel300;
+  }
+
+  get isPromotedToLevel400() {
+    return this._isPromotedToLevel400;
+  }
+
+  get isGratuated() {
+    return this._isGraduated;
+  }
+
+  get isWithdrawn() {
+    return this._isWithdrawn;
+  }
+
+  get isSuspended() {
+    return this._isSuspended;
+  }
+
   addExamResult(examResult: ExamResult): void {
     this.examResults.push(examResult);
   }
 
   changeIsPromotedToLevel200(): void {
-    this.isPromotedToLevel200 = !this.isPromotedToLevel200;
+    this._isPromotedToLevel200 = !this._isPromotedToLevel200;
   }
 
   changeIsPromotedToLevel300(): void {
-    this.isPromotedToLevel300 = !this.isPromotedToLevel300;
+    this._isPromotedToLevel300 = !this._isPromotedToLevel300;
   }
 
   changeIsPromotedToLevel400(): void {
-    this.isPromotedToLevel400 = !this.isPromotedToLevel400;
+    this._isPromotedToLevel400 = !this._isPromotedToLevel400;
   }
 
   changeIsGraduated(): void {
-    this.isGraduated = !this.isGraduated;
+    this._isGraduated = !this._isGraduated;
   }
 
   changeIsWithdrawn(): void {
-    this.isWithdrawn = !this.isWithdrawn;
+    this._isWithdrawn = !this._isWithdrawn;
   }
 
   changeIsSuspended(): void {
-    this.isSuspended = !this.isSuspended;
+    this._isSuspended = !this._isSuspended;
   }
 }

@@ -49,6 +49,10 @@ export default class Teacher extends User {
     return this._applicationStatus;
   }
 
+  get subject() {
+    return this._subject;
+  }
+
   createExam(exam: Exam): void {
     this.examsCreated.push(exam);
   }
