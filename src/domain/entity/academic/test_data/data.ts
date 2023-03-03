@@ -41,7 +41,7 @@ export const teacher = new Teacher(
   new AcademicYear("name", new Date(), new Date(), true, admin),
   admin,
   academicTerm,
-  new Subject("name", "descripiton", academicTerm, admin, 12)
+  new Subject("subject", "description", academicTerm, admin, 4)
 );
 
 export const question = new Question(
@@ -56,11 +56,11 @@ export const question = new Question(
 );
 
 export const subject = new Subject(
-  "name",
-  "descripiton",
+  "subject",
+  "description",
   academicTerm,
   admin,
-  12
+  4
 );
 
 export const student = new Student(

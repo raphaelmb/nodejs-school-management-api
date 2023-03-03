@@ -10,14 +10,12 @@ describe("Subject test", () => {
       "description",
       academicTerm,
       admin,
-      4,
-      teacher
+      4
     );
 
     expect(subject.id).toBeDefined();
     expect(subject.name).toBe("subject");
     expect(subject.description).toBe("description");
-    expect(subject.teacher.id).toBe(teacher.id);
     expect(subject.academicTerm.id).toBeDefined();
     expect(subject.createdBy.id).toBe(admin.id);
     expect(subject.durationInMonths).toBe(4);
@@ -25,14 +23,7 @@ describe("Subject test", () => {
 
   it("should not create a subject with a non admin role", () => {
     expect(() => {
-      return new Subject(
-        "subject",
-        "description",
-        academicTerm,
-        teacher,
-        4,
-        teacher
-      );
+      return new Subject("subject", "description", academicTerm, teacher, 4);
     }).toThrow(new Error("Non admin cannot create subject"));
   });
 });

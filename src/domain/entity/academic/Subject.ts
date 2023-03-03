@@ -10,7 +10,6 @@ export default class Subject {
     readonly academicTerm: AcademicTerm,
     readonly createdBy: Admin,
     readonly durationInMonths: number,
-    private _teacher: Teacher,
     readonly id?: string
   ) {
     if (!this.id) this.id = crypto.randomUUID();
@@ -20,9 +19,5 @@ export default class Subject {
   validate(): void {
     if (this.createdBy.role !== Role.admin)
       throw new Error("Non admin cannot create subject");
-  }
-
-  get teacher() {
-    return this._teacher;
   }
 }
